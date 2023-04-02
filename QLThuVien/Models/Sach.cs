@@ -33,7 +33,7 @@ public partial class Sach
 
     public virtual NhaXb MaNxbNavigation { get; set; } = null!;
 
-    public virtual TheLoai MaTheLoaiNavigation { get; set; } = null!;
+    public virtual TheLoai? MaTheLoaiNavigation { get; set; }
 
     public virtual ViTriSach? ViTriSach { get; set; }
 }

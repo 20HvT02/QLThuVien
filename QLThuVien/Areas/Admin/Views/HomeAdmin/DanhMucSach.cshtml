@@ -9,12 +9,12 @@
 }
 <h1>Danh Mục Sách</h1>
 <hr/>
-<p>
-    <a asp-action="Create"><i class="bi bi-plus-circle"></i> Thêm mới sách</a>
+<p class="mb-2">
+    <a asp-action="ThemMoiSach"><i class="bi bi-plus-circle"></i> Thêm mới sách</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="table-primary">
             <th>
                 Tên Sách
             </th>
@@ -30,6 +30,7 @@
             <th>
                 Thể Loại
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -62,8 +63,8 @@
                     @Html.DisplayFor(modelItem => item.MaTheLoaiNavigation.TenTheLoai)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.MaSach"><i class="bi bi-pencil-square"></i>Sửa</a> |
-                    <a asp-action="Delete" asp-route-id="@item.MaSach"><i class="bi bi-trash3"></i>Xóa</a> |
+                    <a asp-action="SuaSanPham" asp-route-masach="@item.MaSach"><i class="bi bi-pencil-square"></i>Sửa</a> |
+                    <a asp-action="Delete" asp-route-masach="@item.MaSach"><i class="bi bi-trash3"></i>Xóa</a> |
                     <a asp-action="Details" asp-route-id="@item.MaSach"><i class="bi bi-ticket-detailed"></i>Chi tiết</a>
                 </td>
             </tr>
@@ -73,5 +74,5 @@
 <div>
     @Html.PagedListPager(Model,page => Url.Action("DanhMucSach", new {page=page}),new X.PagedList.Web.Common.PagedListRenderOptions(){
     LiElementClasses = new List<String> {"page-item"},
-    PageClasses = new List<String> {"mt-4 page-link d-flex justify-content-center"}})
+    PageClasses = new List<String> {"mt-3 page-link d-flex justify-content-center"}})
 </div>
