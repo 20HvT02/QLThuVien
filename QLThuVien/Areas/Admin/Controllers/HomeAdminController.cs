@@ -15,13 +15,12 @@ namespace QLThuVien.Areas.Admin.Controllers
         QlthuVienLtwebContext db = new QlthuVienLtwebContext();
 
         [Route("")]
-        [Route("index")]
+/*        [Route("index")]
         public IActionResult Index()
         {
             return View();
-        }
-
-        [Route("DanhMucSach")]
+        }*/
+        [Route("danhmucsach")]
         public IActionResult DanhMucSach(int? page)
         {
 
