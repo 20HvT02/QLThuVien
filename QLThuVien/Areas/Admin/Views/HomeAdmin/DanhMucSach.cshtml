@@ -8,7 +8,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 <h1>Danh Mục Sách</h1>
-<hr/>
+<hr />
+<p class="text-danger">@TempData["Message"]</p>
 <p class="mb-2">
     <a asp-action="ThemMoiSach"><i class="bi bi-plus-circle"></i> Thêm mới sách</a>
 </p>
@@ -64,7 +65,7 @@
                 </td>
                 <td>
                     <a asp-action="SuaSanPham" asp-route-masach="@item.MaSach"><i class="bi bi-pencil-square"></i>Sửa</a> |
-                    <a asp-action="Delete" asp-route-masach="@item.MaSach"><i class="bi bi-trash3"></i>Xóa</a> |
+                    <a asp-action="XoaSach" asp-route-masach="@item.MaSach" data-confirm="Bạn có chắc chắn muốn xóa sách này không?" class="delete-sach"><i class="bi bi-trash3"></i>Xóa</a> |
                     <a asp-action="Details" asp-route-id="@item.MaSach"><i class="bi bi-ticket-detailed"></i>Chi tiết</a>
                 </td>
             </tr>
@@ -76,3 +77,12 @@
     LiElementClasses = new List<String> {"page-item"},
     PageClasses = new List<String> {"mt-3 page-link d-flex justify-content-center"}})
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('a[data-confirm]').click(function (e) {
+        if (!confirm($(this).data('confirm'))) {
+            e.preventDefault();
+        }
+    });
+</script>

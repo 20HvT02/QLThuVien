@@ -29,9 +29,9 @@ public partial class Sach
 
     public virtual ICollection<ChiTietHst> ChiTietHsts { get; } = new List<ChiTietHst>();
 
-    public virtual NgonNgu MaNgonNguNavigation { get; set; } = null!;
+    public virtual NgonNgu? MaNgonNguNavigation { get; set; }
 
-    public virtual NhaXb MaNxbNavigation { get; set; } = null!;
+    public virtual NhaXb? MaNxbNavigation { get; set; }
 
     public virtual TheLoai? MaTheLoaiNavigation { get; set; }
 

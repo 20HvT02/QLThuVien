@@ -10,6 +10,7 @@
 </div>
 <hr/>
 <h1>Thêm Mới Sách</h1>
+<p class="text-danger">@TempData["Error"]</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -46,7 +47,7 @@
                 <span asp-validation-for="TinhTrangSach" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaNxb" class="control-label">Năm Xuất Bản</label>
+                <label asp-for="MaNxb" class="control-label">Nhà Xuất Bản</label>
                 <select asp-for="MaNxb" class ="form-control" asp-items="ViewBag.MaNxb"></select>
             </div>
             <div class="form-group">

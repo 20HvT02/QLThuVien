@@ -24,7 +24,7 @@ namespace QLThuVien.Areas.Admin.Controllers
         [Route("DanhMucSach")]
         public IActionResult DanhMucSach(int? page)
         {
-            
+
 
             int pageNumber = page == null || page < 1 ? 1 : page.Value;
             int pageSize = 12;
@@ -53,13 +53,17 @@ namespace QLThuVien.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SuaSanPham(Sach sach)
         {
-/*            if (ModelState.IsValid)
-            {*/
+            TempData["Message"] = "";
+            if (ModelState.IsValid)
+            {
+                TempData["Message"] = "Sửa thông tin thành công";
                 db.Entry(sach).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("DanhMucSach", "HomeAdmin");
-/*            }
-            return View(sach);*/
+            }
+            TempData["Message"] = "Sửa thông tin thất bại";
+            return RedirectToAction("DanhMucSach", "HomeAdmin");
+
         }
 
         [Route("ThemMoiSach")]
@@ -74,18 +78,45 @@ namespace QLThuVien.Areas.Admin.Controllers
 
         [Route("ThemMoiSach")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult ThemMoiSach(Sach newSach)
         {
-            if (ModelState.IsValid)
+            TempData["Message"] = "";
+            TempData["Error"] = "";
+            var masach = db.Saches.Where(x => x.MaSach == newSach.MaSach);
+            if(masach.Any())
             {
-                db.Saches.Add(newSach);
-                db.SaveChanges();
-                return RedirectToAction("DanhMucSach");
+                TempData["Error"] = "Đã tồn tại mã sách này.Vui lòng ghi mã sách khác.";
+                return View(newSach);
             }
-            return View(newSach);
+            db.Saches.Add(newSach);
+            db.SaveChanges();
+            TempData["Message"] = "Thêm mới thành công";
+            return RedirectToAction("DanhMucSach");
+
         }
 
+        [Route("XoaSach")]
+        [HttpGet]
+        public IActionResult XoaSach(string maSach)
+        {
+            TempData["Message"] = "";
+            var chiTietHSM = db.ChiTietHsms.Where(x => x.MaSach == maSach).ToList();
+            var chiTietHST = db.ChiTietHsts.Where(x => x.MaSach == maSach).ToList();
+            if (chiTietHSM.Count() > 0 && chiTietHST.Count() > 0)
+            {
+                TempData["Message"] = "Không thể xóa!";
+                return RedirectToAction("DanhMucSach", "HomeAdmin");
+            }
+            var anhSach = db.AnhDdsaches.Where(x => x.MaSach == maSach);
+            if (anhSach.Any())
+            {
+                db.Remove(anhSach);
+            }
+            db.Remove(db.Saches.Find(maSach));
+            db.SaveChanges();
+            TempData["Message"] = "Xóa thành công!";
+            return RedirectToAction("DanhMucSach", "HomeAdmin");
+        }
 
     }
 }
