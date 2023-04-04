@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Core.Types;
 using QLThuVien.Models;
 using X.PagedList;
 
@@ -35,6 +36,18 @@ namespace QLThuVien.Areas.Admin.Controllers
             return View(lst);
         }
 
+        [Route("timkiem")]
+        [HttpPost]
+        public IActionResult TimKiemSach(string tenSach)
+        {
+            var lstsanpham = db.Saches.AsNoTracking()
+                                     .Include(s => s.MaTheLoaiNavigation)
+                                     .Where(s => s.TenSach.Contains(tenSach))
+                                     .OrderBy(s => s.TenSach)
+                                     .ToList();
+            ViewBag.TenCanTim = tenSach;
+            return View(lstsanpham);
+        }
 
         [Route("SuaSanPham")]
         [HttpGet]
