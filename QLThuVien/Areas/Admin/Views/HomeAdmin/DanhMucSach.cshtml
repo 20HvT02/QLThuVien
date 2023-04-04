@@ -74,8 +74,8 @@
 </table>
 <div>
     @Html.PagedListPager(Model,page => Url.Action("DanhMucSach", new {page=page}),new X.PagedList.Web.Common.PagedListRenderOptions(){
-    LiElementClasses = new List<String> {"page-item"},
-    PageClasses = new List<String> {"mt-3 page-link d-flex justify-content-center"}})
+    LiElementClasses = new List<String> {"page-item mr-1"},
+    PageClasses = new List<String> {"mt-3 mb-3 page-link"}})
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

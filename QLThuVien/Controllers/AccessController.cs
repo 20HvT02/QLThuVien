@@ -51,7 +51,7 @@ namespace QLThuVien.Controllers
 
                 if (checkUser == null)
                 {
-                    user.Password = GetMD5(user.Password);
+                    user.Password = user.Password;
                     db.Users.Add(user);
                     db.SaveChanges();
                     return RedirectToAction("Index", "Home");
