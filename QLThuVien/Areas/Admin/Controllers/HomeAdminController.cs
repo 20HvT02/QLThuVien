@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Core.Types;
 using QLThuVien.Models;
 using X.PagedList;
 
@@ -35,7 +34,6 @@ namespace QLThuVien.Areas.Admin.Controllers
             PagedList<Sach> lst = new PagedList<Sach>(lstsanpham, pageNumber, pageSize);
             return View(lst);
         }
-
         [Route("timkiem")]
         [HttpPost]
         public IActionResult TimKiemSach(string tenSach)
