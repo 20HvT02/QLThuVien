@@ -34,7 +34,18 @@ namespace QLThuVien.Areas.Admin.Controllers
             PagedList<Sach> lst = new PagedList<Sach>(lstsanpham, pageNumber, pageSize);
             return View(lst);
         }
-
+        [Route("timkiem")]
+        [HttpPost]
+        public IActionResult TimKiemSach(string tenSach)
+        {
+            var lstsanpham = db.Saches.AsNoTracking()
+                                     .Include(s => s.MaTheLoaiNavigation)
+                                     .Where(s => s.TenSach.Contains(tenSach))
+                                     .OrderBy(s => s.TenSach)
+                                     .ToList();
+            ViewBag.TenCanTim = tenSach;
+            return View(lstsanpham);
+        }
 
         [Route("SuaSanPham")]
         [HttpGet]

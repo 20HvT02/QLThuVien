@@ -17,6 +17,23 @@ namespace QLThuVien.Areas.Admin.Controllers
         }
 
         [Route("CapTaiKhoan")]
+        [HttpGet]
+        public IActionResult CapTaiKhoan()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult CapTaiKhoan(User newUser)
+        {
+            var username = db.Users.Where(x => x.Username == newUser.Username);
+            if(username.Any())
+            {
+                return View(newUser);
+            }
+            db.Users.Add(newUser);
+            db.SaveChanges();
+            return RedirectToAction("ThongTinTaiKhoan");
+        }
     }
 }
