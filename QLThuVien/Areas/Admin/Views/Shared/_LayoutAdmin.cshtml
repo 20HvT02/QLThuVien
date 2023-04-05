@@ -36,11 +36,11 @@
 
     <!-- Main CSS-->
     <link href="~/LayoutAdmin/css/theme.css" rel="stylesheet" media="all">
-
+    <link href="~/Library/css/bg.css" rel="stylesheet" >
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
+    <div class="page-wrapper gradient-custom-4">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
             <div class="header-mobile__bar">
@@ -133,12 +133,12 @@
         <!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
+            <header class="header-desktop gradient-custom-4">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                            <form class="form-header" asp-area="Admin" asp-controller="HomeAdmin" asp-action="TimKiemSach" method="POST">
+                                <input class="au-input au-input--xl" type="text" name="tenSach" placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -310,7 +310,7 @@
             </header>
             <!-- HEADER DESKTOP-->
             <!-- MAIN CONTENT-->
-            <div class="main-content">
+            <div class="main-content gradient-custom-4">
                 <div class="section__content section__content--p30">
                     @RenderBody()
                 </div>
