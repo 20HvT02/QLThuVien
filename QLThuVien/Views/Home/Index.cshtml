@@ -1,29 +1,30 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
-
 @using QLThuVien.Models
 @model List<Sach>
 
-@foreach (var item in Model)
+
+@foreach (var sach in Model)
 {
     <div class="inner-content">
         <div class="product-list" data-aos="fade-up">
-            <figure class="product-style slick-slide slick-active" tabindex="-1" role="option" aria-describedby="slick-slide11" style="width: 297px;" data-slick-index="1" aria-hidden="false">
-                <img src="../Library/images/@item.AnhDdsach" ) alt="Books" class="product-item">
-                <button type="button" class="add-to-cart" data-product-tile="add-to-cart" tabindex="0">Add to Cart</button>
-                <figcaption>
-                    <h3>@item.TenSach</h3>
-                    <p>Sanchit Howdy</p>
-                    <div class="item-price">
-                        <span class="prev-price">$ 30.00</span>$ 38.00
-                    </div>
-                </figcaption>
-            </figure>
-            <!--grid-->
+            <div class="col-md-3">
+                <figure class="product-style">
+                    <img src="../ImagesBook/@sach.TenFileAnhDd" alt="Books" class="product-item">
+                    <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                        Add to
+                        Bag
+                    </button>
+                    <figcaption>
+                        <h3>@sach.TenSach</h3>
+                        <p>@sach.TacGia</p>
+                        <div class="item-price"><a>View more</a></div>
+                    </figcaption>
+                </figure>
+            </div>
         </div>
     </div>
-
-    <!--inner-content-->
 }
+
