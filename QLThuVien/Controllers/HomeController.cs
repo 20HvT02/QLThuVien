@@ -7,7 +7,7 @@ namespace QLThuVien.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        QlthuVienLtwebContext db = new QlthuVienLtwebContext();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
