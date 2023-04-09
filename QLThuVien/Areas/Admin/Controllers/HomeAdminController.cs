@@ -128,5 +128,15 @@ namespace QLThuVien.Areas.Admin.Controllers
             return RedirectToAction("DanhMucSach", "HomeAdmin");
         }
 
+        [Route("DanhSachNhanVien")]
+
+        public IActionResult DanhSachNhanVien()
+        {
+            var dsnv = db.NhanViens.AsNoTracking().Include(x=>x.UsernameNavigation).OrderBy(x => x.TenNhanVien).ToList();
+            return View(dsnv);
+        }
+
+
+
     }
 }
