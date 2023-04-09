@@ -1,4 +1,5 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
 }
@@ -12,6 +13,8 @@
 
 <head>
     <title>UTC's Library</title>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../Library/icomoon/icomoon.css">
     <link rel="stylesheet" type="text/css" href="../Library/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="../Library/css/style.css">
+
     
     <link rel="stylesheet" type="text/css" href="../Library/css/bg.css">
     
@@ -92,6 +96,8 @@
                     </div>
                     <div class="col-md-6 col-sm- menu2">
                         <!-- Sử dụng lớp col-md-6 cho màn hình window và col-12 cho các màn hình khác -->
+    
+
                         <div class="action-menu">
                             <div class="search-bar">
                                 <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
@@ -102,6 +108,7 @@
                                 </form>
                             </div>
                         </div>
+
                         @if (!string.IsNullOrEmpty(username))
                         {
                             <div class="dropdown">
@@ -123,13 +130,17 @@
                                 <span>Tài khoản</span>
                             </a>
                         }
+                        
+
                         <a href="shoping-cart.html" class="cart for-buy"><i class="icon icon-clipboard"></i></a>
                     </div>
                 </div>
             </div>
+
         </div><!--top-content-->
         <div class="hamburger"></div>
     </header>
+
 
     <section id="billboard">
 
@@ -145,6 +156,7 @@
                         <div class="slider-item">
                             <div class="banner-content">
                                 <h2 class="banner-title">Life of the Wild</h2>
+
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
                                     ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
@@ -154,6 +166,8 @@
                                     <a href="#" class="btn btn-outline-accent btn-accent-arrow">
                                         Read More<i class="icon icon-ns-arrow-right"></i>
                                     </a>
+                                
+
                                 </div>
                             </div><!--banner-content-->
                             <img src="../Library/images/main-banner1.jpg" alt="banner" class="banner-image">
@@ -162,6 +176,7 @@
                         <div class="slider-item">
                             <div class="banner-content">
                                 <h2 class="banner-title">Birds gonna be Happy</h2>
+
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
                                     ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
@@ -171,6 +186,8 @@
                                     <a href="#" class="btn btn-outline-accent btn-accent-arrow">
                                         Read More<i class="icon icon-ns-arrow-right"></i>
                                     </a>
+                               
+
                                 </div>
                             </div><!--banner-content-->
                             <img src="../Library/images/main-banner2.jpg" alt="banner" class="banner-image">
@@ -187,6 +204,9 @@
         </div>
     </section>
 
+
+
+
     <section id="special-offer" class="bookshelf">
 
         <div class="section-header align-center">
@@ -195,6 +215,7 @@
 
         <div class="container">
             <div class="row">
+
                 <div class="inner-content">
                     <div class="product-list" data-aos="fade-up">
                         <div class="col-md-3">
@@ -207,12 +228,15 @@
                                 <figcaption>
                                     <h3>The lady beauty Scarlett</h3>
                                     <p>Arthur Doyle</p>
-                                    <div class="item-price">$ 45.00</div>
+                                    <div class="item-price">$ 45.00</div>     Cái ô push lên là cái trên này
                                 </figcaption>
                             </figure>
                         </div>
                     </div>
-                </div><!--inner-content-->
+                </div>
+                <!--inner-content-->
+              
+
             </div>
         </div>
     </section>
@@ -230,11 +254,13 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <figure class="product-style">
+
                                     <img src="../Library/images/product-item3.jpg" alt="Books" class="product-item">
                                     <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
                                         Add to
                                         Cart
-                                    </button>
+                                    </button>                                   
+
                                     <figcaption>
                                         <h3>The lady beauty Scarlett</h3>
                                         <p>Arthur Doyle</p>
@@ -270,9 +296,11 @@
                     <div class="tab-content">
                         <div id="all-genre" data-tab-content class="active">
                             <div class="row">
+
                                 @RenderBody()
                             </div>
                         </div>
+
                     </div>
 
                 </div><!--inner-tabs-->
@@ -280,11 +308,14 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+
                     <div class="btn-wrap align-right">
                         <a href="#" class="btn btn-accent-arrow btn-outline-accent" tabindex="0">
                             View all products <i class="icon icon-ns-arrow-right"></i>
                         </a>
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -401,17 +432,20 @@
                         </div>
 
                         <div class="row">
+
                             <div class="btn-wrap align-center">
                                 <a href="#" class="btn btn-outline-accent btn-accent-arrow" tabindex="0">
                                     Read All
                                     Articles<i class="icon icon-ns-arrow-right"></i>
                                 </a>
+
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
+
     </section>
 
     <footer id="footer">
@@ -522,6 +556,8 @@
         </div>
     </footer>
 
+
+
     <div id="footer-bottom">
         <div class="container">
             <div class="row">
@@ -529,9 +565,11 @@
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6">
+
                                 <p>
                                     © 2022 All rights reserved. Free HTML Template by <a href="https://www.templatesjungle.com/" target="_blank">TemplatesJungle</a>
                                 </p>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="social-links align-right">
@@ -564,4 +602,6 @@
 
 </body>
 
+
 </html>
+
