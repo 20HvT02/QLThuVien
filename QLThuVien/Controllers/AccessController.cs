@@ -1,13 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using MailKit.Net.Smtp;
 using QLThuVien.Models;
-using System.Security.Cryptography;
-using System.Text;
+using System.Linq;
 
 namespace QLThuVien.Controllers
 {
     public class AccessController : Controller
     {
-        QlthuVienLtwebContext db = new QlthuVienLtwebContext();
+        private readonly QlthuVienLtwebContext _db;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public AccessController(QlthuVienLtwebContext db, IHttpContextAccessor httpContextAccessor)
+        {
+            _db = db;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -26,14 +36,14 @@ namespace QLThuVien.Controllers
         {
             if (HttpContext.Session.GetString("Username") == null)
             {
-                var u = db.Users.Where(x => x.Username.Equals(user.Username) && x.Password.Equals(user.Password)).FirstOrDefault();
+                var u = _db.Users.Where(x => x.Username.Equals(user.Username) && x.Password.Equals(user.Password)).FirstOrDefault();
                 if (u != null)
                 {
-                    HttpContext.Session.SetString("UserName", u.Username.ToString());
+                    HttpContext.Session.SetString("Username", u.Username.ToString());
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return View();
+            return View(user);
         }
 
         [HttpGet]
@@ -47,32 +57,16 @@ namespace QLThuVien.Controllers
         {
             if (ModelState.IsValid)
             {
-                var checkUser = db.Users.Where(x => x.Username.Equals(user.Username) && x.EmailDk.Equals(user.EmailDk));
-
-                if (checkUser == null)
+                var checkUser = _db.Users.Where(x => x.Username.Equals(user.Username)).FirstOrDefault();
+                var checkEmail = _db.Users.Where(x => x.EmailDk.Equals(user.EmailDk)).FirstOrDefault();
+                if (checkUser == null && checkEmail == null)
                 {
-                    user.Password = user.Password;
-                    db.Users.Add(user);
-                    db.SaveChanges();
+                    _db.Users.Add(user);
+                    _db.SaveChanges();
                     return RedirectToAction("Index", "Home");
                 }
-
             }
-            return View();
-        }
-        public static string GetMD5(string str)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(str);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
-
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-
-            }
-            return byte2String;
+            return View(user);
         }
     }
 }

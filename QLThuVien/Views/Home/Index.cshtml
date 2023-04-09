@@ -1,8 +1,28 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
+@using QLThuVien.Models
+@model List<Sach>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (var sach in Model)
+{
+    <div class="inner-content">
+        <div class="product-list" data-aos="fade-up">
+            <div class="col-md-3">
+                <figure class="product-style">
+                    <img src="../ImagesBook/@sach.TenFileAnhDd" alt="Books" class="product-item">
+                    <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                        Add to
+                        Bag
+                    </button>
+                    <figcaption>
+                        <h3>@sach.TenSach</h3>
+                        <p>@sach.TacGia</p>
+                        <div class="item-price"><a>View more</a></div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+}

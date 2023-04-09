@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QLThuVien.Models;
+using System.Data.Entity;
 using System.Diagnostics;
 
 namespace QLThuVien.Controllers
@@ -15,7 +16,8 @@ namespace QLThuVien.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var sach = db.Saches.ToList();
+            return View(sach);
         }
 
         public IActionResult Privacy()

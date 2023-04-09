@@ -3,6 +3,9 @@
     ViewData["Title"] = "ThongTinTaiKhoan";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+@using QLThuVien.Models.ThongTinTaiKhoanViewModels
+@model ThongTinTaiKhoanViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <section style="background-color: #eee;">
     <div class="container py-5">
@@ -13,12 +16,12 @@
                     <div class="card-body text-center">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                              class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3">John Smith</h5>
-                        <p class="text-muted mb-1">Full Stack Developer</p>
-                        <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                        <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">Follow</button>
-                            <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                        <h5 class="my-3">@Model.NhanVien.TenNhanVien</h5>
+                        <p class="text-muted mb-0">@Model.NhanVien.Description</p>
+
+                        <div class="d-flex justify-content-center flex-column mb-2">
+                            <button type="button" class="btn btn-primary">Upload Images</button>
+                            <a asp-area="Admin" asp-controller="AccountAdmin" asp-action="EditProfile" type="submit" class="btn btn-outline-primary mt-1">Edit Profile</a>
                         </div>
                     </div>
                 </div>
@@ -26,24 +29,20 @@
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush rounded-3">
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fas fa-globe fa-lg text-warning"></i>
-                                <p class="mb-0">https://mdbootstrap.com</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0"><a>github.com</a></p>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0"><a>twitter.com</a></p>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0"><a>instagram.com</a></p>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0">facebook.com</p>
                             </li>
                         </ul>
                     </div>
@@ -54,10 +53,35 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
+                                <p class="mb-0">User Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">@Model.User.Username</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Password</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input type="password" class="form-control" value="@Model.User.Password" readonly />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-eye-slash" id="password-toggle" onclick="togglePasswordVisibility()"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">Johnatan Smith</p>
+                                <p class="text-muted mb-0">@Model.NhanVien.TenNhanVien</p>
                             </div>
                         </div>
                         <hr>
@@ -66,7 +90,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">example@example.com</p>
+                                <p class="text-muted mb-0">@Model.User.EmailDk</p>
                             </div>
                         </div>
                         <hr>
@@ -75,16 +99,16 @@
                                 <p class="mb-0">Phone</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">(097) 234-5678</p>
+                                <p class="text-muted mb-0">@Model.NhanVien.Sdt</p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Mobile</p>
+                                <p class="mb-0">Sex</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">(098) 765-4321</p>
+                                <p class="text-muted mb-0">@Model.NhanVien.GioiTinh</p>
                             </div>
                         </div>
                         <hr>
@@ -93,7 +117,7 @@
                                 <p class="mb-0">Address</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                <p class="text-muted mb-0">@Model.NhanVien.DiaChi</p>
                             </div>
                         </div>
                     </div>
@@ -172,3 +196,18 @@
         </div>
     </div>
 </section>
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.querySelector('.form-control');
+        var passwordToggle = document.getElementById('password-toggle');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
+        } else {
+            passwordInput.type = 'password';
+            passwordToggle.classList.remove('fa-eye');
+            passwordToggle.classList.add('fa-eye-slash');
+        }
+    }
+</script>
