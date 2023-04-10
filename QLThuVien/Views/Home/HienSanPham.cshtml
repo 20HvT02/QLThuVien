@@ -3,42 +3,69 @@
     ViewData["Title"] = "HienSanPham";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
+
 @model List<Sach>
 
-<section id="special-offer" class="bookshelf">
 
-	<div class="section-header align-center">
-		<h2 class="section-title">Trending</h2>
-	</div>
-
+<div>
 	<div class="container">
 		<div class="row">
-			<div class="inner-content">
-				<div class="product-list" data-aos="fade-up">
+			<div class="col-md-12">
+				<div class="colored">
+					<h1 class="page-title">Shop</h1>
+					<div class="breadcum-items">
 
-					@foreach (var item in Model)
-					{
+						<span class="item">@Html.ActionLink("Home", "Index", null, null)</span>
+						
+						<span class="item colored">Shop</span>
+					</div>
+					<ul class="tabs">
+						@foreach (var Loai in ViewBag.Loais)
+						{
+							<li data-tab-target="#all-genre" class="active tab">@Loai.TenTheLoai</li>
+						}
 
-						<figure class="product-style slick-slide slick-active" tabindex="-1" role="option" aria-describedby="slick-slide11" style="width: 297px;" data-slick-index="1" aria-hidden="false">
-							<img src=@Url.Content("../Library/images/" + item.AnhDdsach) alt="Books" class="product-item">
-							<button type="button" class="add-to-cart" data-product-tile="add-to-cart" tabindex="0">Add to Cart</button>
-							<figcaption>
-								<h3>@item.TenSach</h3>
-								<p>Sanchit Howdy</p>
-								<div class="item-price">
-									<span class="prev-price">$ 30.00</span>$ 38.00
-								</div>
-							</figcaption>
-						</figure>
-					}
-					<!--grid-->
+						
+					</ul>
 				</div>
-			</div><!--inner-content-->
+			</div>
+			
+		</div>
+	</div>
+</div><!--site-banner-->
+
+<section class="padding-large">
+	<div class="container">
+		<div class="row">
+
+			<div class="products-grid grid">
+
+				@foreach (var item in Model)
+				{
+				
+					<figure class="product-style">
+						@*<img src="../ImagesBook/@item.TenFileAnhDd" alt="Books" class="product-item">*@
+						<img src=@Url.Content("../ImagesBook/" +@item.TenFileAnhDd ) alt="Books" class="product-item" style="height:350px">
+
+						<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+						<figcaption>
+							<div class="marquee">@item.TenSach</div>
+							<p>@item.TacGia</p>
+							<div class="item-price">@item.TinhTrangSach</div>
+
+						</figcaption>
+					</figure>
+				
+				}
+				
+				
+
+				
+				
+
+			</div>
+
 		</div>
 	</div>
 </section>
-
-
-
-
 

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 @model User
@@ -99,7 +98,7 @@
                                                 </div>
                                             </div>
                                             <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                                Bạn chưa có tài khoản? <a asp-controller="Access" asp-action="Registration" style="color: #393f81;">Đăng kí.</a>
+                                                Bạn chưa có tài khoản? <a asp-controller="Access" asp-action="Register" style="color: #393f81;">Đăng kí.</a>
                                             </p>
                                             <a href="#!" class="small text-muted">Điều khoản sử dụng.</a>
                                             <a href="#!" class="small text-muted">Chính sách bảo mật</a>
@@ -122,17 +121,17 @@
 
     <script>
         document.querySelector('form').addEventListener('submit', (event) => {
-          event.preventDefault();
-          const username = document.querySelector('#form2Example17').value;
-          const password = document.querySelector('#form2Example27').value;
-          if (!username || !password) {
-            document.querySelector('#error').textContent = 'Vui lòng nhập đầy đủ thông tin';
-            setTimeout(() => {
-                document.querySelector('#error').textContent = '';
-            }, 1500);
-          }else{
-              break
-          }
+            event.preventDefault();
+            const username = document.querySelector('#form2Example17').value;
+            const password = document.querySelector('#form2Example27').value;
+            if (!username || !password) {
+                document.querySelector('#error').textContent = 'Vui lòng nhập đầy đủ thông tin';
+                setTimeout(() => {
+                    document.querySelector('#error').textContent = '';
+                }, 1500);
+            } else {
+                break
+            }
         });
     </script>
 

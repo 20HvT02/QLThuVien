@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("QlthuVienLtwebContext");
 builder.Services.AddDbContext<QlthuVienLtwebContext>(x => x.UseSqlServer(connectionString));
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 
 var app = builder.Build();
