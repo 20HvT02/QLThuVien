@@ -144,8 +144,10 @@ img {
 
 /* image align */
 figure.align-right {
+  
   margin: 30px 0 30px 30px;
 }
+
 
 /* Typography */
 /*----------------------------------------------*/
@@ -264,6 +266,7 @@ abbr {
 ::placeholder {
   color: #999;
 }
+
 
 /*----------------------------------------------*/
 /* 2.1 Floating & Alignment */
@@ -479,7 +482,7 @@ fieldset {
 pre,
 blockquote,
 dl,
-figure,
+  ,
 table,
 p,
 ul,
@@ -1729,15 +1732,22 @@ footer#footer {
   margin-right: 0;
 }
 .footer-menu h5 {
-  font-size: 1.5em;
-  font-weight: 500;
-  margin-top: 0;
-  margin-bottom: 40px;
-  text-transform: capitalize;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-transform: capitalize;
+}
+.footer-item h5 {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-transform: capitalize;
 }
 
 @media screen and (max-width: 768px) {
-  #footer .footer-item {
+    #footer .footer-item {
     margin-right: 0;
   }
 }
@@ -1828,3 +1838,10 @@ footer#footer {
     width: 100%;
   }
 }
+
+#footer .utc-map h6 {
+    margin-bottom: 15px;
+    font-family: "GoogleSans-Regular";
+    font-size: 13px
+}
+

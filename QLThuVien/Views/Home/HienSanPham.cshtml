@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "HienSanPham";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+@model List<Sach>
+
+
+<div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="colored">
+					<h1 class="page-title">Shop</h1>
+					<div class="breadcum-items">
+
+						<span class="item">@Html.ActionLink("Home", "Index", null, null)</span>
+						
+						<span class="item colored">Shop</span>
+					</div>
+					<ul class="tabs">
+						@foreach (var Loai in ViewBag.Loais)
+						{
+							<li data-tab-target="#all-genre" class="active tab">@Loai.TenTheLoai</li>
+						}
+
+						
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div><!--site-banner-->
+
+<section class="padding-large">
+	<div class="container">
+		<div class="row">
+
+			<div class="products-grid grid">
+
+				@foreach (var item in Model)
+				{
+				
+					<figure class="product-style">
+						@*<img src="../ImagesBook/@item.TenFileAnhDd" alt="Books" class="product-item">*@
+						<img src=@Url.Content("../ImagesBook/" +@item.TenFileAnhDd ) alt="Books" class="product-item" style="height:350px">
+
+						<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+						<figcaption>
+							<div class="marquee">@item.TenSach</div>
+							<p>@item.TacGia</p>
+							<div class="item-price">@item.TinhTrangSach</div>
+
+						</figcaption>
+					</figure>
+				
+				}
+				
+				
+
+				
+				
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
